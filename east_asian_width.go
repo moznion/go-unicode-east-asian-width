@@ -5,7 +5,7 @@ import "unicode"
 // EastAsian is the flag for ambiguous character.
 // If this flag is `true`, ambiguous characters are treated as full width.
 // Elsewise, ambiguous characters are treated as half width.
-// Default value is `true`.
+// Default value is `false`.
 var EastAsian = false
 
 var _EastAsianAmbiguous = &unicode.RangeTable{
