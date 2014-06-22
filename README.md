@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/moznion/go-unicode-east-asian-width.svg?branch=master)](https://travis-ci.org/moznion/go-unicode-east-asian-width)
+
 # go-unicode-east-asian-width
 
 Provides width properties of East Asian Characters.  
