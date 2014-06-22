@@ -1,4 +1,4 @@
-# go-east-asian-width
+# go-unicode-east-asian-width
 
 Provides width properties of East Asian Characters.  
 This package is port of [Unicode::EastAsianWidth](http://search.cpan.org/~audreyt/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm) from Perl to Go.
