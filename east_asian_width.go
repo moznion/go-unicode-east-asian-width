@@ -2,7 +2,13 @@ package eastasianwidth
 
 import "unicode"
 
-var EastAsian bool = false
+/**
+ * EastAsian is the flag for ambiguous character.
+ * If this flag is `true`, ambiguous characters are treated as full width.
+ * Elsewise, ambiguous characters are treated as half width.
+ * Default value is `true`.
+ */
+var EastAsian = false
 
 var _EastAsianAmbiguous = &unicode.RangeTable{
 	R16: []unicode.Range16{
@@ -396,7 +402,26 @@ var _EastAsianWide = &unicode.RangeTable{
 	},
 }
 
-var _Fullwidth = func() map[string]*unicode.RangeTable {
+// EastAsianAmbiguous is the unicode.RangeTable for East Asian ambiguous characters
+var EastAsianAmbiguous = _EastAsianAmbiguous
+
+// EastAsianFullwidth is the unicode.RangeTable for East Asian full width characters
+var EastAsianFullwidth = _EastAsianFullwidth
+
+// EastAsianHalfwidth is the unicode.RangeTable for East Asian half width characters
+var EastAsianHalfwidth = _EastAsianHalfwidth
+
+// EastAsianNarrow is the unicode.RangeTable for East Asian narrow characters
+var EastAsianNarrow = _EastAsianNarrow
+
+// EastAsianNeutral is the unicode.RangeTable for East Asian neutral characters
+var EastAsianNeutral = _EastAsianNeutral
+
+// EastAsianWide is the unicode.RangeTable for East Asian wide characters
+var EastAsianWide = _EastAsianWide
+
+// Fullwidth returns the map of unicode.RangeTable of full width East Asian characters
+func Fullwidth() map[string]*unicode.RangeTable {
 	rangeTable := map[string]*unicode.RangeTable{
 		"EastAsianFullwidth": EastAsianFullwidth,
 		"EastAsianWide":      EastAsianWide,
@@ -409,7 +434,8 @@ var _Fullwidth = func() map[string]*unicode.RangeTable {
 	return rangeTable
 }
 
-var _Halfwidth = func() map[string]*unicode.RangeTable {
+// Halfwidth returns the map of unicode.RangeTable of half width East Asian characters
+func Halfwidth() map[string]*unicode.RangeTable {
 	rangeTable := map[string]*unicode.RangeTable{
 		"EastAsianHalfwidth": EastAsianHalfwidth,
 		"EastAsianNarrow":    EastAsianNarrow,
@@ -423,17 +449,7 @@ var _Halfwidth = func() map[string]*unicode.RangeTable {
 	return rangeTable
 }
 
-var (
-	EastAsianAmbiguous = _EastAsianAmbiguous
-	EastAsianFullwidth = _EastAsianFullwidth
-	EastAsianHalfwidth = _EastAsianHalfwidth
-	EastAsianNarrow    = _EastAsianNarrow
-	EastAsianNeutral   = _EastAsianNeutral
-	EastAsianWide      = _EastAsianWide
-	Fullwidth          = _Fullwidth
-	Halfwidth          = _Halfwidth
-)
-
+// IsFullwidth reports whether the rune is in range of full width character of East Asian.
 func IsFullwidth(char rune) bool {
 	for _, fullwidthRangeTable := range Fullwidth() {
 		if unicode.Is(fullwidthRangeTable, char) {
@@ -443,6 +459,7 @@ func IsFullwidth(char rune) bool {
 	return false
 }
 
+// IsHalfwidth reports whether the rune is in range of half width character of East Asian.
 func IsHalfwidth(char rune) bool {
 	for _, halfwidthRangeTable := range Halfwidth() {
 		if unicode.Is(halfwidthRangeTable, char) {

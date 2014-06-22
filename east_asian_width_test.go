@@ -9,6 +9,7 @@ import (
 
 func TestAmbiguousCharacterShouldBeUsedAsHalfwidth(t *testing.T) {
 	RegisterTestingT(t)
+	EastAsian = false
 
 	char := '‐'
 	Expect(unicode.Is(EastAsianAmbiguous, char)).To(BeTrue())
@@ -18,6 +19,7 @@ func TestAmbiguousCharacterShouldBeUsedAsHalfwidth(t *testing.T) {
 
 func TestAmbiguousCharacterShouldBeUsedAsFullwidth(t *testing.T) {
 	RegisterTestingT(t)
+	EastAsian = false
 
 	EastAsian = true
 
@@ -29,6 +31,7 @@ func TestAmbiguousCharacterShouldBeUsedAsFullwidth(t *testing.T) {
 
 func TestFullwidthCharacterShouldBeUsedAsIt(t *testing.T) {
 	RegisterTestingT(t)
+	EastAsian = false
 
 	var char rune
 
@@ -45,6 +48,7 @@ func TestFullwidthCharacterShouldBeUsedAsIt(t *testing.T) {
 
 func TestHalfwidthCharacterShouldBeUsedAsIt(t *testing.T) {
 	RegisterTestingT(t)
+	EastAsian = false
 
 	var char rune
 

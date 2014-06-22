@@ -33,8 +33,10 @@ func main() {
 
 - `EastAsian bool`
 
-If this variable is `true`, ambiguous characters are treated as full width. Elsewise, ambiguous characters are treated as half width.  
-Default value of this variable is `false`.
+EastAsian is the flag for ambiguous character.  
+If this flag is `true`, ambiguous characters are treated as full width.
+Elsewise, ambiguous characters are treated as half width.  
+Default value is `true`.
 
 - `EastAsianAmbiguous unicode.RangeTable`
 - `EastAsianFullwidth unicode.RangeTable`
